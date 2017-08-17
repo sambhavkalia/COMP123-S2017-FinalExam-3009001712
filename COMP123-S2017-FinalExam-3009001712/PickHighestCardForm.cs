@@ -30,7 +30,7 @@ namespace COMP123_S2017_FinalExam_3009001712
         Hand _hand;
         int _maximumPoints;
         private ScoreBoard _scoreboard;
-        
+
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public ScoreBoard ScoreBoard
@@ -145,7 +145,11 @@ namespace COMP123_S2017_FinalExam_3009001712
             UserMessageTextBox.Text = "Pick the Highest Card";
             DealButton.Enabled = false;
             this.MaximumPoints = 100;
+            //bouns
+            SoundPlayer audio = new SoundPlayer(Properties.Resources.carddeal);
+            audio.Play();
         }
+    
 
         /// <summary>
         /// This method displays each of the Dealt Cards
