@@ -15,7 +15,7 @@ using System.Windows.Forms;
  * Date: 17/08/2017
  * StudentID: 300900171
  * Description: This is PickHigehstCardForm window form
- * Version: 0.1
+ * Version: 0.2 updated form
  */
 
 namespace COMP123_S2017_FinalExam_3009001712
@@ -234,7 +234,7 @@ namespace COMP123_S2017_FinalExam_3009001712
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PickHighestCardForm_Load(object sender, EventArgs e, ScoreBoard r)
+        private void PickHighestCardForm_Load(object sender, EventArgs e)
         {
             // Initialize ScoreBoard HERE
             this.ScoreBoard = new ScoreBoard(this.ScoreTextBox, this.TimeTextBox, this.FinalScoreTextBox);
