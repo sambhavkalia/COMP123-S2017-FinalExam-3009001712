@@ -29,8 +29,21 @@ namespace COMP123_S2017_FinalExam_3009001712
         Deck _deck;
         Hand _hand;
         int _maximumPoints;
+        private ScoreBoard _scoreboard;
+        
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        public ScoreBoard ScoreBoard
+        {
+            get
+            {
+                return this._scoreboard;
+            }
+            set
+            {
+                this._scoreboard = value;
+            }
+        }
         public List<PictureBox> DealtCardPictureBoxList
         {
             get
@@ -193,6 +206,8 @@ namespace COMP123_S2017_FinalExam_3009001712
         {
             this._hideCards();
             this._resetDeck();
+            this.ScoreBoard.Score = 0;
+            this.ScoreBoard.Time = 30;
             CountDownTimer.Enabled = true;
             this.MaximumPoints = 100;
             DealButton.Enabled = true;
@@ -219,10 +234,10 @@ namespace COMP123_S2017_FinalExam_3009001712
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PickHighestCardForm_Load(object sender, EventArgs e)
+        private void PickHighestCardForm_Load(object sender, EventArgs e, ScoreBoard r)
         {
             // Initialize ScoreBoard HERE
-
+            this.ScoreBoard = new ScoreBoard(this.ScoreTextBox, this.TimeTextBox, this.FinalScoreTextBox);
             // Initialize the App Sounds
             this._buildDealtCardPictureBoxList();
             this._reset();
@@ -272,8 +287,7 @@ namespace COMP123_S2017_FinalExam_3009001712
                 this.CurrentClickedCard.BackColor = Color.Green;
                 UserMessageTextBox.Text = "You Got It!";
 
-                //Uncomment this --> ScoreBoard.Score += this.MaximumPoints;
-
+                ScoreBoard.Score += this.MaximumPoints;
                 DealButton.Enabled = true;
             }
             // otherwise Red
@@ -358,7 +372,7 @@ namespace COMP123_S2017_FinalExam_3009001712
         /// <param name="e"></param>
         private void CountDownTimer_Tick(object sender, EventArgs e)
         {
-            /* Uncomment THIS
+         
             ScoreBoard.UpdateTime();
             if (ScoreBoard.Time == 0)
             {
@@ -367,7 +381,7 @@ namespace COMP123_S2017_FinalExam_3009001712
                 this._disableDealtCards();
                 this._showFinalScore();
             }
-            */
+            
         }
 
         /// <summary>
